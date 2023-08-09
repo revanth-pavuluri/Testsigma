@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.ordersystem.app.repo.CustomerRepo;
@@ -40,10 +41,15 @@ public class Controller {
     private FiltersSpecification<Orders> OrdersFiltersSpecification;
     
     @PostMapping("/orders")
-    public List<Orders> index(@RequestBody Req request) {
+    public ResponseEntity<List<Orders>> index(@RequestBody Req request) {
         Specification<Orders> searchSpecification = OrdersFiltersSpecification
                 .getSearchSpecification(request.getSearch(), request.getOperator());
-            return orepo.findAll(searchSpecification);
+            try {
+                return ResponseEntity.ok(orepo.findAll(searchSpecification));    
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+                return ResponseEntity.ok(null);
     }
 
     @Autowired

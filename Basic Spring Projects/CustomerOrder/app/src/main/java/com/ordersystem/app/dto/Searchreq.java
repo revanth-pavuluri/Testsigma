@@ -6,10 +6,9 @@ public class Searchreq{
     String column;
     String value;
     Operations operation;
-    String joinTable;
 
     public enum Operations{
-        EQUAL, LIKE, IN, GREATER_THAN, LESS_THAN, BETWEEN, JOIN, STARTS, ENDS;
+        EQUAL, LIKE, IN, GREATER_THAN, LESS_THAN, STARTS, ENDS, ASC, DESC;
     }
 
 }
