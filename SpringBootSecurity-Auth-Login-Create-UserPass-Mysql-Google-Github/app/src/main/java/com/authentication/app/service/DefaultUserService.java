@@ -8,4 +8,5 @@ import com.authentication.app.model.User;
 
 public interface DefaultUserService extends UserDetailsService{
 	User save(UserRegisteredDTO userRegisteredDTO);
+	User findByEmail(String email);
 }

@@ -56,4 +56,7 @@ public class DefaultUserServiceImpl implements DefaultUserService{
 		
 		return userRepo.save(user);
 	}
+	public User findByEmail(String email){
+		return userRepo.findByEmail(email);
+	}
 }
